@@ -132,6 +132,21 @@
     const fecha = new Date();
     const opciones = { year: 'numeric', month: 'long', day: 'numeric' };
     const fechaTexto = fecha.toLocaleDateString('es-ES', opciones);
+	
+	// Insertar los datos en el HTML del ticket
+	document.getElementById("t-nombre").textContent = nombre;
+	document.getElementById("t-fecha").textContent = fechaTexto;
+	document.getElementById("t-para").textContent = destinatario;
+	document.getElementById("t-total").textContent = total;
+	document.getElementById("t-cantidad").textContent = cartas.length;
+
+	const ulCartas = document.getElementById("t-cartas");
+	cartas.forEach(carta => {
+		const li = document.createElement("li");
+		li.textContent = carta;
+		ulCartas.appendChild(li);
+	});
+
 
     // Encabezado
     doc.setFontSize(16);
@@ -158,4 +173,3 @@
 </script>
 </body>
 </html>
-
