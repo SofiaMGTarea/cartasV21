@@ -135,22 +135,22 @@
 
     // Encabezado
     doc.setFontSize(16);
-    doc.text("🎀 Confirmación de Pedido - MOKANI", 20, 20);
+    doc.text(" Confirmación de Pedido - MOKANI", 20, 20);
 
     doc.setFontSize(12);
-    doc.text(`📅 Fecha: ${fechaTexto}`, 20, 30);
-    doc.text(`👤 Nombre: ${nombre}`, 20, 40);
-    doc.text(`📨 Para: ${destinatario}`, 20, 50);
-    doc.text(`📧 Correo: ${correo}`, 20, 60);
+    doc.text(` Fecha: ${fechaTexto}`, 20, 30);
+    doc.text(` Nombre: ${nombre}`, 20, 40);
+    doc.text(` Para: ${destinatario}`, 20, 50);
+    doc.text(` Correo: ${correo}`, 20, 60);
 
     // Cartas
-    doc.text("📝 Cartas seleccionadas:", 20, 75);
+    doc.text(" Cartas seleccionadas:", 20, 75);
     cartas.forEach((carta, i) => {
       doc.text(`• ${carta}`, 25, 85 + i * 10);
     });
 
     // Total
-    doc.text(`💰 Total: ${total}`, 20, 95 + cartas.length * 10);
+    doc.text(` Total: ${total}`, 20, 95 + cartas.length * 10);
 
     // Guardar
     doc.save("Pedido_MOKANI.pdf");
