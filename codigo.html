@@ -90,21 +90,28 @@
     }
 
     .galeria {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      max-width: 900px;
-      margin: auto;
+	  display: grid;
+	  grid-template-columns: repeat(2, 1fr); /* solo 2 columnas */
+	  gap: 30px; /* espacio entre cartas */
+	  max-width: 1000px;
+	  margin: 0 auto;
+	  padding: 20px;
     }
 
     .galeria-item {
-      background-color: #fff;
-      border-radius: 12px;
-      width: 200px;
-      margin: 10px;
-      padding: 10px;
-      text-align: center;
-      color: #333;
+	  background-color: #fff;
+	  border-radius: 12px;
+	  width: 300px;
+	  margin: 10px;
+	  padding: 10px;
+	  text-align: center;
+	  color: #333;
+	  display: flex;
+	  flex-direction: column;
+	  justify-content: flex-start;
+	  align-items: center;
+	  height: 550px; /* Misma altura para todas */
+	  box-sizing: border-box;
     }
 
     .galeria-item img {
@@ -121,8 +128,12 @@
     }
     
     .descripcion-img {
-      margin-top: 10px;
-      min-height: 60px;
+	  margin-top: 10px;
+	  flex-grow: 1; /* Empuja la descripción hacia abajo */
+	  display: flex;
+	  align-items: flex-start; /* Alinea el texto arriba del bloque */
+	  text-align: left;
+	  font-size: 13px;
     }
 
     .cliente-section {
