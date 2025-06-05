@@ -84,31 +84,52 @@
   <div id="ticket"></div>
   <a href="codigo.html" class="boton-regresar">⬅️ Regresar al inicio</a>
   
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const nombre = localStorage.getItem("nombre");
-      const correo = localStorage.getItem("correo");
-      const imagen = localStorage.getItem("imagen");
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const nombre = localStorage.getItem("nombre");
+    const correo = localStorage.getItem("correo");
+    const imagen = localStorage.getItem("imagen");
 
-      if (!nombre || !correo || !imagen) {
-        document.getElementById("ticket").innerHTML = "<p><strong>Datos no disponibles.</strong></p>";
-        return;
-      }
+    if (!nombre || !correo || !imagen) {
+      document.getElementById("ticket").innerHTML = "<p><strong>Datos no disponibles.</strong></p>";
+      return;
+    }
 
-      document.getElementById("ticket").innerHTML = `
-        <div class="ticket-contenido">
-          <h2 style="font-size: 28px; margin-bottom: 10px;">🎨 Ticket de Diseño Personalizado</h2>
-          <p style="font-style: italic; color: #a83a64;">"Gracias por compartir tu creatividad..."</p>
-          <p><strong>Nombre:</strong> ${nombre}</p>
-          <p><strong>Correo:</strong> ${correo}</p>
-          <p><strong>Imagen enviada:</strong></p>
-          <img src="${imagen}" alt="Imagen enviada">
-          <p><strong>Precio:</strong> A convenir según el diseño.</p>
-          <button onclick="window.print()">🖨️ Imprimir Ticket</button>
-        </div>
-      `;
+    // Mostrar el contenido en pantalla
+    document.getElementById("ticket").innerHTML = `
+      <div class="ticket-contenido">
+        <h2 style="font-size: 28px; margin-bottom: 10px;">🎨 Ticket de Diseño Personalizado</h2>
+        <p style="font-style: italic; color: #a83a64;">"Gracias por compartir tu creatividad..."</p>
+        <p><strong>Nombre:</strong> ${nombre}</p>
+        <p><strong>Correo:</strong> ${correo}</p>
+        <p><strong>Imagen enviada:</strong></p>
+        <img id="imagen-ticket" src="${imagen}" alt="Imagen enviada">
+        <p><strong>Precio:</strong> A convenir según el diseño.</p>
+        <button id="btn-pdf">📄 Guardar como PDF</button>
+      </div>
+    `;
+
+    // Esperar al clic del botón para generar PDF
+    document.getElementById("btn-pdf").addEventListener("click", () => {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+
+      doc.setFontSize(16);
+      doc.text(" Ticket de Diseño Personalizado", 20, 20);
+      doc.setFontSize(12);
+      doc.text(`Nombre: ${nombre}`, 20, 35);
+      doc.text(`Correo: ${correo}`, 20, 45);
+      doc.text("Precio: A convenir según el diseño", 20, 55);
+
+      // Agregar la imagen
+      const imgData = imagen;
+      doc.addImage(imgData, 'JPEG', 20, 65, 160, 90); // x, y, width, height
+
+      doc.save("Diseño_MOKANI.pdf");
     });
-  </script>
+  });
+</script>
 
 </body>
 </html>
