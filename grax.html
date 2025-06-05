@@ -118,11 +118,7 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script>
-  document.getElementById("btn-pdf").addEventListener("click", () => {
-    const { jsPDF } = window.jspdf;
-    const doc = new jsPDF();
-
-    // Datos del ticket
+  document.addEventListener("DOMContentLoaded", () => {
     const nombre = localStorage.getItem("nombre") || "No disponible";
     const correo = localStorage.getItem("correo") || "No disponible";
     const destinatario = localStorage.getItem("destinatario") || "No disponible";
@@ -132,43 +128,44 @@
     const fecha = new Date();
     const opciones = { year: 'numeric', month: 'long', day: 'numeric' };
     const fechaTexto = fecha.toLocaleDateString('es-ES', opciones);
-	
-	// Insertar los datos en el HTML del ticket
-	document.getElementById("t-nombre").textContent = nombre;
-	document.getElementById("t-fecha").textContent = fechaTexto;
-	document.getElementById("t-para").textContent = destinatario;
-	document.getElementById("t-total").textContent = total;
-	document.getElementById("t-cantidad").textContent = cartas.length;
 
-	const ulCartas = document.getElementById("t-cartas");
-	cartas.forEach(carta => {
-		const li = document.createElement("li");
-		li.textContent = carta;
-		ulCartas.appendChild(li);
-	});
+    // ✅ Mostrar datos en la página al cargar
+    document.getElementById("t-nombre").textContent = nombre;
+    document.getElementById("t-fecha").textContent = fechaTexto;
+    document.getElementById("t-para").textContent = destinatario;
+    document.getElementById("t-total").textContent = total;
+    document.getElementById("t-cantidad").textContent = cartas.length;
 
-
-    // Encabezado
-    doc.setFontSize(16);
-    doc.text(" Confirmación de Pedido - MOKANI", 20, 20);
-
-    doc.setFontSize(12);
-    doc.text(` Fecha: ${fechaTexto}`, 20, 30);
-    doc.text(` Nombre: ${nombre}`, 20, 40);
-    doc.text(` Para: ${destinatario}`, 20, 50);
-    doc.text(` Correo: ${correo}`, 20, 60);
-
-    // Cartas
-    doc.text(" Cartas seleccionadas:", 20, 75);
-    cartas.forEach((carta, i) => {
-      doc.text(`• ${carta}`, 25, 85 + i * 10);
+    const ulCartas = document.getElementById("t-cartas");
+    cartas.forEach(carta => {
+      const li = document.createElement("li");
+      li.textContent = carta;
+      ulCartas.appendChild(li);
     });
 
-    // Total
-    doc.text(` Total: ${total}`, 20, 95 + cartas.length * 10);
+    // ✅ Función del botón PDF
+    document.getElementById("btn-pdf").addEventListener("click", () => {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
 
-    // Guardar
-    doc.save("Pedido_MOKANI.pdf");
+      doc.setFontSize(16);
+      doc.text(" Confirmación de Pedido - MOKANI", 20, 20);
+
+      doc.setFontSize(12);
+      doc.text(` Fecha: ${fechaTexto}`, 20, 30);
+      doc.text(` Nombre: ${nombre}`, 20, 40);
+      doc.text(` Para: ${destinatario}`, 20, 50);
+      doc.text(` Correo: ${correo}`, 20, 60);
+
+      doc.text(" Cartas seleccionadas:", 20, 75);
+      cartas.forEach((carta, i) => {
+        doc.text(`• ${carta}`, 25, 85 + i * 10);
+      });
+
+      doc.text(` Total: ${total}`, 20, 95 + cartas.length * 10);
+
+      doc.save("Pedido_MOKANI.pdf");
+    });
   });
 </script>
 </body>
