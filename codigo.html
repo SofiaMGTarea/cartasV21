@@ -111,15 +111,15 @@
 	  flex-direction: column;
 	  justify-content: flex-start;
 	  align-items: center;
-	  height: 550px; /* Misma altura para todas */
 	  box-sizing: border-box;
     }
 
     .galeria-item img {
-     width: 100%;
-      height: auto;
-      border-radius: 10px;
-      transition: transform 0.3s ease;
+	width: 100%;
+	max-height: 200px; /* ✅ Tamaño uniforme para todas */
+	object-fit: cover;
+	border-radius: 10px;
+	transition: transform 0.3s ease;
       }
 
     .galeria-item img:hover {
