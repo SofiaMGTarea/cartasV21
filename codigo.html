@@ -33,7 +33,7 @@
 	background-color: #ffd6e8;
 	color: white;
 	box-shadow: 0 4px 8px rgb(0,0,0,0.3);
-	overflow: visible; /* 🟢 permite que los corazones se queden dentro */
+	overflow: visible; /* permite que los corazones se queden dentro */
 	    
     }
 
@@ -42,6 +42,7 @@
 	color: #b30059;
 	text-shadow: 1px 1px 2px #fff;
 	margin: 0;
+	margin-right: 40px; / separa visualmente del menú /
 	font-size: 2.5em;
 	text-align: left;
       /* Ahora está posicionado al inicio por estar dentro de un contenedor con display:flex */
@@ -55,6 +56,7 @@
 	display: flex;
 	gap: 16px; /* espacio entre los enlaces */
 	flex-wrap: wrap;
+	font-size: 20px;
     }
     
     .menu-navegacion a {
@@ -388,11 +390,11 @@
       <a href="pedido.html">Realizar pedido</a>
       <a href="#formulario-imagen">Enviar diseño</a>
     </nav>
-	  <div class="heart" style="left: 10%; animation-delay: 0s;"></div>
-<div class="heart" style="left: 25%; animation-delay: 1s;"></div>
-<div class="heart" style="left: 40%; animation-delay: 2.5s;"></div>
-<div class="heart" style="left: 60%; animation-delay: 1.2s;"></div>
-<div class="heart" style="left: 80%; animation-delay: 3.2s;"></div>
+		<div class="heart-header" style="left: 10%; animation-delay: 0s;"></div>
+		<div class="heart-header" style="left: 25%; animation-delay: 2.5s;"></div>
+		<div class="heart-header" style="left: 40%; animation-delay: 1s;"></div>
+		<div class="heart-header" style="left: 60%; animation-delay: 1.2s;"></div>
+		<div class="heart-header" style="left: 80%; animation-delay: 3.2s;"></div>
   </div>
 </header>
 
@@ -566,13 +568,23 @@
 	<div class="cliente-box">
 		<p><strong>Realizar un pedido</strong></p>
 		<a href="pedido.html" class="boton-destacado">Realizar pedido</a>
+		<div class="heart-header" style="left: 35%; animation-delay: 0.2s;"></div>
+		<div class="heart-header" style="left: 50%; animation-delay: 1.75s;"></div>
+		<div class="heart-header" style="left: 58%; animation-delay: 3.15s;"></div>
+		<div class="heart-header" style="left: 45%; animation-delay: 2.38s;"></div>
+		<div class="heart-header" style="left: 55%; animation-delay: 1.8s;"></div>
+		<div class="heart-header" style="left: 63%; animation-delay: 0.44s;"></div>
+		<div class="heart-header" style="left: 38%; animation-delay: 1.24s;"></div>
+		<div class="heart-header" style="left: 40%; animation-delay: 0.74s;"></div>
 	</div>
 	<!-- Corazones animados dentro de columna-derecha -->
 	<div class="heart" style="left: 5%; animation-delay: 0s;"></div>
-	<div class="heart" style="left: 20%; animation-delay: 1s;"></div>
+	<div class="heart" style="left: 20%; animation-delay: 1.0s;"></div>
+	<div class="heart" style="left: 55%; animation-delay: 1.5s;"></div>
+	<div class="heart" style="left: 75%; animation-delay: 0.5s;"></div>
 	<div class="heart" style="left: 40%; animation-delay: 2s;"></div>
-	<div class="heart" style="left: 60%; animation-delay: 3s;"></div>
-	<div class="heart" style="left: 80%; animation-delay: 4s;"></div>
+	<div class="heart" style="left: 90%; animation-delay: 2.5s;"></div>
+
 	</section>
     </div> <!-- ← AQUÍ TERMINA columna-derecha -->
 	  
@@ -612,14 +624,44 @@
   transform: scale(1.05);
 }
 
-/* Corazón animado */
+/* Corazón animado header*/
+.heart-header {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: rgba(255, 94, 120, 0.3);
+  transform: rotate(45deg);
+  animation: flotarHeader 3s infinite ease-in-out;
+  opacity: 0.6;
+  z-index: 0;
+}
+.heart-header::before,
+.heart-header::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: rgba(255, 94, 120, 0.3);
+  border-radius: 50%;
+}
+
+.heart-header::before {
+  top: -10px;
+  left: 0;
+}
+
+.heart-header::after {
+  left: -10px;
+  top: 0;
+}
+/* Corazón animado columna derecha*/
 .heart {
   position: absolute;
   width: 14px;
   height: 14px;
   background: rgba(255, 94, 120, 0.3);
   transform: rotate(45deg);
-  animation: float 6s infinite ease-in;
+  animation: flotarDerecha 9s infinite ease-in;
   opacity: 0.65;
   z-index: 0;
 }
@@ -645,7 +687,7 @@
 }
 
 /* Animación suave hacia arriba */
-@keyframes float {
+@keyframes flotarHeader {
   0% {
     transform: translateY(0) rotate(45deg);
     opacity: 0.3;
@@ -654,7 +696,42 @@
     opacity: 0.6;
   }
   100% {
-    transform: translateY(-80px) rotate(45deg);
+    transform: translateY(-80px) rotate(45deg); /* poco */
+    opacity: 0;
+  }
+}
+
+@keyframes flotarDerecha {
+  0% {
+    transform: translateY(0) rotate(45deg) scale(0.8);
+    opacity: 0.2;
+  }
+  15% {
+    transform: translateY(-60px) rotate(45deg) scale(0.9);
+    opacity: 0.4;
+  }
+  30% {
+    transform: translateY(-120px) rotate(45deg) scale(1.1);
+    opacity: 0.5;
+  }
+  45% {
+    transform: translateY(-180px) rotate(45deg) scale(1.35);
+    opacity: 0.6;
+  }
+  60% {
+    transform: translateY(-230px) rotate(45deg) scale(1.15);
+    opacity: 0.6;
+  }
+  75% {
+    transform: translateY(-280px) rotate(45deg) scale(1.0);
+    opacity: 0.5;
+  }
+  90% {
+    transform: translateY(-350px) rotate(45deg) scale(0.9);
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateY(-420px) rotate(45deg) scale(0.8);
     opacity: 0;
   }
 }
