@@ -129,12 +129,13 @@
     }
     
     .descripcion-img {
-	  margin-top: 10px;
-	  flex-grow: 1; /* Empuja la descripción hacia abajo */
-	  display: flex;
-	  align-items: flex-start; /* Alinea el texto arriba del bloque */
-	  text-align: left;
-	  font-size: 13px;
+	margin-top: 10px;
+	flex-grow: 1; /* Empuja la descripción hacia abajo */
+	display: flex;
+	align-items: flex-start; /* Alinea el texto arriba del bloque */
+	text-align: justify;
+	text-justify: inter-word;   /*  Espaciado dinámico entre palabras */
+	font-size: 13px;
     }
 
     .cliente-section {
@@ -326,6 +327,29 @@
 		flex-wrap: wrap;
 	}
 	  
+	.boton-destacado {
+		display: block;
+		margin: 20px auto;
+		padding: 16px 32px;
+		font-size: 20px;
+		font-weight: bold;
+		background-color: #ff4d6d;
+		color: white;
+		text-decoration: none;
+		border-radius: 12px;
+		text-align: center;
+		width: fit-content;
+		box-shadow: 0 4px 12px rgba(255, 0, 102, 0.3);
+		transition: transform 0.3s ease;
+	}
+	
+	.boton-destacado:hover {
+		transform: scale(1.05);
+		background-color: #e63e5c;
+	}
+
+
+	  
   </style>
 </head>
 <body>
@@ -431,64 +455,40 @@ Hacemos cartas porque creemos que lo pequeño también puede ser eterno.
 	</div>
 
 	      
-        <div class="galeria-item">
-          <img src="sofi2.jpeg" alt="Carta 2">
-          <div class="descripcion-img">"Jardin de Caricias"<br>Entre corazones entrelazados, flores que<br>
-            brillan y dulces gatitos dibujados a mano, esta <br>
-            carta es un poema visual para quienes creen<br>
-            en la magia del amor sencillo y verdadero. Un<br>
-            regalo personalizado que late al ritmo de dos<br>
-            nombres, unidos como un jardín secreto que <br>
-            florece en papel.</div>
-        </div>
-        <div class="galeria-item">
-          <img src="sofi3.jpeg" alt="Carta 3">
-          <div class="descripcion-img">"Suspiros de Amor"<br>
-            Un universo de amor y alegría vive en cada<br>
-            pliegue de esta carta. Con la ternura eterna<br>
-            de Snoopy y palabras que abrazan el corazón,<br>
-            esta creación combina colores vibrantes,<br>
-            pequeños secretos guardados en sobres y<br>
-            mensajes que susurran ‘Te amo’ en dos <br>
-            idiomas. Perfecta para regalar un pedacito<br>
-            de felicidad en cualquier momento del año.</div>
-        </div>
-         <div class="galeria-item">
-          <img src="sofi4.jpeg" alt="Carta 3">
-          <div class="descripcion-img">“Amor eterno”<br>
-Dos esqueletos sellan un abrazo que <br>
-trasciende el tiempo, rodeados de besos<br>
-suspendidos en el aire. Esta carta es una<br>
-promesa: la de un amor que ni la muerte<br>
-puede apagar. Una pieza melancólica y <br>
-apasionada, ideal para almas románticas que <br>
-encuentran belleza en lo eterno y lo imposible.</div>
-        </div>
-        
-        <div class="galeria-item">
-          <img src="sofi5.jpeg" alt="Carta 3">
-          <div class="descripcion-img">“Jardín de memorias”<br>
-Una carta que florece en cada palabra.<br>
-Pétalos de colores vibrantes enmarcan un<br>
-  mensaje íntimo y esperanzador, como un<br>
-susurro al oído de alguien amado.<br>
-  Hecha con la calidez de un abrazo y el suspiro de la <br>
-distancia, es un refugio para quienes creen<br>
-  que el amor puede brotar incluso en los <br>
-    rincones más tristes.</div>
-        </div>
-        <div class="galeria-item">
-          <img src="sofi6.jpeg" alt="Carta 3">
-          <div class="descripcion-img">“Santuario de tinta y susurros”<br>
-Una carta que se despliega como un antiguo <br>
-hechizo: en cada pliegue, versos que acarician<br>
-y heridas que sanan. Dibujos detallados como <br>
-sueños entrelazados, pájaros, corazones,<br>
-símbolos secretos… todo resguardado en un <br>
-relicario de nostalgia y ternura. Es un fragmento de alma atrapado en papel,<br>
-perfecto para quien ama la belleza cruda de <br>
-  las emociones.</div>
-        </div>
+  <div class="galeria-item">
+    <img src="sofi2.jpeg" alt="Carta 2">
+    <div class="descripcion-img">"Jardín de Caricias"<br><br>
+      Entre corazones entrelazados, flores que brillan y dulces gatitos dibujados a mano, esta carta es un poema visual para quienes creen en la magia del amor sencillo y verdadero. Un regalo personalizado que late al ritmo de dos nombres, unidos como un jardín secreto que florece en papel.
+    </div>
+  </div>
+
+  <div class="galeria-item">
+    <img src="sofi3.jpeg" alt="Carta 3">
+    <div class="descripcion-img">"Suspiros de Amor"<br><br>
+      Un universo de amor y alegría vive en cada pliegue de esta carta. Con la ternura eterna de Snoopy y palabras que abrazan el corazón, esta creación combina colores vibrantes, pequeños secretos guardados en sobres y mensajes que susurran ‘Te amo’ en dos idiomas. Perfecta para regalar un pedacito de felicidad en cualquier momento del año.
+    </div>
+  </div>
+
+  <div class="galeria-item">
+    <img src="sofi4.jpeg" alt="Carta 4">
+    <div class="descripcion-img">"Amor Eterno"<br><br>
+      Dos esqueletos sellan un abrazo que trasciende el tiempo, rodeados de besos suspendidos en el aire. Esta carta es una promesa: la de un amor que ni la muerte puede apagar. Una pieza melancólica y apasionada, ideal para almas románticas que encuentran belleza en lo eterno y lo imposible.
+    </div>
+  </div>
+
+  <div class="galeria-item">
+    <img src="sofi5.jpeg" alt="Carta 5">
+    <div class="descripcion-img">"Jardín de Memorias"<br><br>
+      Una carta que florece en cada palabra. Pétalos de colores vibrantes enmarcan un mensaje íntimo y esperanzador, como un susurro al oído de alguien amado. Hecha con la calidez de un abrazo y el suspiro de la distancia, es un refugio para quienes creen que el amor puede brotar incluso en los rincones más tristes.
+    </div>
+  </div>
+
+  <div class="galeria-item">
+    <img src="sofi6.jpeg" alt="Carta 6">
+    <div class="descripcion-img">"Santuario de Tinta y Susurros"<br><br>
+      Una carta que se despliega como un antiguo hechizo: en cada pliegue, versos que acarician y heridas que sanan. Dibujos detallados como sueños entrelazados, pájaros, corazones, símbolos secretos… todo resguardado en un relicario de nostalgia y ternura. Es un fragmento de alma atrapado en papel, perfecto para quien ama la belleza cruda de las emociones.
+    </div>
+  </div>
       </section>
 
       <!-- Sección para cliente -->
@@ -545,9 +545,8 @@ perfecto para quien ama la belleza cruda de <br>
 </div>
         <div class="cliente-box">
           <p><strong>Realizar un pedido</strong></p>
-          <a href="pedido.html">
-  <input type="submit" value="Realizar pedidos" style="padding: 10px 20px; border: none; border-radius: 5px; background-color: #ffcccc; cursor: pointer;">
-</a>
+         <a href="pedido.html" class="boton-destacado">Realizar pedido</a>
+
         </div>
       </section>
 
